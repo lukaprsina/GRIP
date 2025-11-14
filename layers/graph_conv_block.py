@@ -1,6 +1,6 @@
 import torch
 import torch.nn as nn
-from layers.graph_operation_layer import ConvTemporalGraphical
+from .graph_operation_layer import ConvTemporalGraphical
 
 class Graph_Conv_Block(nn.Module):
 	def __init__(self,

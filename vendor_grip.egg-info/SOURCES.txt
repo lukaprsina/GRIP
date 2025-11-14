@@ -1,0 +1,7 @@
+README.md
+pyproject.toml
+vendor_grip.egg-info/PKG-INFO
+vendor_grip.egg-info/SOURCES.txt
+vendor_grip.egg-info/dependency_links.txt
+vendor_grip.egg-info/requires.txt
+vendor_grip.egg-info/top_level.txt

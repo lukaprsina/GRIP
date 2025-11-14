@@ -4,14 +4,11 @@ import sys
 import numpy as np 
 import torch
 import torch.optim as optim
-from model import Model
-from xin_feeder_baidu import Feeder
+from .model import Model
+from .xin_feeder_baidu import Feeder
 from datetime import datetime
 import random
 import itertools
-
-CUDA_VISIBLE_DEVICES='1'
-os.environ["CUDA_VISIBLE_DEVICES"] = CUDA_VISIBLE_DEVICES
 
 def seed_torch(seed=0):
 	random.seed(seed)
@@ -22,7 +19,8 @@ def seed_torch(seed=0):
 	torch.cuda.manual_seed_all(seed) # if you are using multi-GPU.
 	torch.backends.cudnn.benchmark = False
 	torch.backends.cudnn.deterministic = True
-seed_torch()
+# When used as a package, avoid setting environment variables and seeding at import time.
+# These actions will be performed only when running the module directly.
 
 max_x = 1. 
 max_y = 1. 
@@ -348,6 +346,9 @@ def run_test(pra_model, pra_data_path):
 
 
 if __name__ == '__main__':
+	CUDA_VISIBLE_DEVICES = os.environ.get('CUDA_VISIBLE_DEVICES', '1')
+	os.environ['CUDA_VISIBLE_DEVICES'] = CUDA_VISIBLE_DEVICES
+	seed_torch()
 	graph_args={'max_hop':2, 'num_node':120}
 	model = Model(in_channels=4, graph_args=graph_args, edge_importance_weighting=True)
 	model.to(dev)

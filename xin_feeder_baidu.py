@@ -10,7 +10,7 @@ import torch.optim as optim
 import torch.nn.functional as F
 from torchvision import datasets, transforms
 
-from layers.graph import Graph
+from .layers.graph import Graph
 
 import time
 

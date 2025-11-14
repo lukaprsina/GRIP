@@ -1,0 +1,17 @@
+[build-system]
+requires = ["setuptools>=40.8.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "vendor-grip"
+version = "0.0.0"
+description = "Vendor copy of the GRIP package used in waymo-project"
+readme = "README.md"
+requires-python = ">=3.8"
+dependencies = [
+    "torch>=1.7",
+]
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["grip*"]
