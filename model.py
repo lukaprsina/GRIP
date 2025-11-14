@@ -8,9 +8,13 @@ from layers.graph_conv_block import Graph_Conv_Block
 from layers.seq2seq import Seq2Seq, EncoderRNN
 import numpy as np 
 
+
 class Model(nn.Module):
-	def __init__(self, in_channels, graph_args, edge_importance_weighting, **kwargs):
+	def __init__(self, in_channels, graph_args, edge_importance_weighting, use_cuda=None, **kwargs):
 		super().__init__()
+
+		if use_cuda is None:
+			use_cuda = torch.cuda.is_available()
 
 		# load graph
 		self.graph = Graph(**graph_args)
@@ -39,9 +43,9 @@ class Model(nn.Module):
 
 		self.num_node = num_node = self.graph.num_node
 		self.out_dim_per_node = out_dim_per_node = 2 #(x, y) coordinate
-		self.seq2seq_car = Seq2Seq(input_size=(64), hidden_size=out_dim_per_node, num_layers=2, dropout=0.5, isCuda=True)
-		self.seq2seq_human = Seq2Seq(input_size=(64), hidden_size=out_dim_per_node, num_layers=2, dropout=0.5, isCuda=True)
-		self.seq2seq_bike = Seq2Seq(input_size=(64), hidden_size=out_dim_per_node, num_layers=2, dropout=0.5, isCuda=True)
+		self.seq2seq_car = Seq2Seq(input_size=(64), hidden_size=out_dim_per_node, num_layers=2, dropout=0.5, isCuda=use_cuda)
+		self.seq2seq_human = Seq2Seq(input_size=(64), hidden_size=out_dim_per_node, num_layers=2, dropout=0.5, isCuda=use_cuda)
+		self.seq2seq_bike = Seq2Seq(input_size=(64), hidden_size=out_dim_per_node, num_layers=2, dropout=0.5, isCuda=use_cuda)
 
 
 	def reshape_for_lstm(self, feature):
