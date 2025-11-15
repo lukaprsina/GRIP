@@ -1,17 +1,23 @@
 [build-system]
-requires = ["setuptools>=40.8.0", "wheel"]
+requires = ["setuptools>=61.0", "wheel"]
 build-backend = "setuptools.build_meta"
 
 [project]
 name = "vendor-grip"
-version = "0.0.0"
-description = "Vendor copy of the GRIP package used in waymo-project"
+version = "0.0.1"
+description = "Vendor fork of grip++ model for trajectory prediction (packaged with Minimal PyProject)."
 readme = "README.md"
 requires-python = ">=3.8"
-dependencies = [
-    "torch>=1.7",
+authors = [
+    { name = "Xin Li" },
+    { name = "Xiaowen Ying" },
+    { name = "Mooi Choo Chuah" },
 ]
+license = { text = "MIT" }
+dependencies = ["numpy", "torch"]
 
-[tool.setuptools.packages.find]
-where = ["."]
-include = ["grip*"]
+[tool.setuptools]
+packages = ["grip"]
+
+[tool.setuptools.package-dir]
+"grip" = "."

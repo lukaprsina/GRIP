@@ -1,5 +1,12 @@
 README.md
 pyproject.toml
+setup.py
+./__init__.py
+./data_process.py
+./main.py
+./model.py
+./setup.py
+./xin_feeder_baidu.py
 vendor_grip.egg-info/PKG-INFO
 vendor_grip.egg-info/SOURCES.txt
 vendor_grip.egg-info/dependency_links.txt

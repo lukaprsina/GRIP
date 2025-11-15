@@ -1,9 +1,14 @@
-"""GRIP package (vendored)
-
-This package is a vendored copy used by waymo-project. Do NOT export
-components at the package top-level — import submodules explicitly, e.g.
-``from grip.model import Model``.
 """
+GRIP++ vendorized package.
 
-__all__ = []
-__version__ = "0.0.0"
+This package intentionally does not export everything at top-level to avoid
+exposing implementation details. Use imports such as `from grip.model import Model`.
+"""
+__all__ = [
+    "model",
+    "xin_feeder_baidu",
+    "data_process",
+    "layers",
+]
+
+__version__ = "0.0.1"

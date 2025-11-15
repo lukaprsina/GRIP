@@ -1,12 +1,14 @@
 Metadata-Version: 2.4
 Name: vendor-grip
-Version: 0.0.0
-Summary: Vendor copy of the GRIP package used in waymo-project
-License: UNKNOWN
+Version: 0.0.1
+Summary: Vendor fork of grip++ model for trajectory prediction (packaged with Minimal PyProject).
+Author-email: Vendor <noreply@example.com>
+License: MIT
 Platform: UNKNOWN
 Requires-Python: >=3.8
 Description-Content-Type: text/markdown
-Requires-Dist: torch>=1.7
+Requires-Dist: numpy
+Requires-Dist: torch
 
 # GRIP
 
